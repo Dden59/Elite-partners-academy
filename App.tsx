@@ -28,13 +28,14 @@ const App: React.FC = () => {
   const renderContent = () => {
     switch (activeTab) {
       case 'intro':
-        return <TabIntro />;
+        // Передаем функцию переключения вкладки
+        return <TabIntro onStartLearning={() => setActiveTab('course')} />;
       case 'course':
         return <TabCourse />;
       case 'profile':
         return <TabProfile />;
       default:
-        return <TabIntro />;
+        return <TabIntro onStartLearning={() => setActiveTab('course')} />;
     }
   };
 
@@ -48,13 +49,8 @@ const App: React.FC = () => {
       
       {/* Ambient Background Effects */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-         {/* Top Left Purple Glow */}
          <div className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-ios-lilac opacity-[0.08] blur-[100px] rounded-full"></div>
-         
-         {/* Bottom Right Deep Violet Glow */}
          <div className="absolute bottom-[-100px] right-[-100px] w-[600px] h-[600px] bg-[#4C1D95] opacity-[0.1] blur-[120px] rounded-full"></div>
-         
-         {/* Center subtle glow */}
          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-ios-lilac opacity-[0.03] blur-[150px] rounded-full"></div>
       </div>
       
