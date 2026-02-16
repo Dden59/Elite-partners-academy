@@ -1,96 +1,145 @@
 import React from 'react';
-import { MessageCircle, Send, Search, Target, MousePointerClick, ShieldAlert, BarChart2 } from 'lucide-react';
+import { Target, Send, Search, ShieldAlert, BarChart2 } from 'lucide-react';
 
 const Lesson2_Part2: React.FC = () => {
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-10 animate-fade-in pb-10">
        
-       <div className="glass-card p-4 rounded-xl bg-blue-500/10 border-blue-500/30 mb-6">
-          <p className="text-blue-200 text-sm font-serif">
-             <strong>Часть 2:</strong> Масштабируемся. Подключаем таргетированную и контекстную рекламу. Здесь деньги превращаются в лидов.
-          </p>
-       </div>
-
-       {/* === 4. ВКОНТАКТЕ === */}
+       {/* === ВКОНТАКТЕ === */}
        <section className="space-y-6">
           <div className="flex items-center gap-3">
-             <div className="w-8 h-8 rounded bg-blue-600 flex items-center justify-center text-white font-bold">VK</div>
-             <h3 className="text-xl font-serif text-white">4. ВКонтакте: Золотая жила</h3>
+             <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">VK</div>
+             <h2 className="text-2xl font-serif text-white">Воронка привлечения трейдеров во ВКонтакте</h2>
           </div>
 
-          <div className="space-y-4 text-ios-textSec font-serif text-sm leading-7">
-             <p>Аудитория 90+ млн. Платёжеспособные мужчины 25–45 лет. Идеально для долгих воронок.</p>
-             
-             <div className="bg-[#120B1F] p-5 rounded-xl border border-white/5">
-                <h4 className="text-white font-bold mb-3 flex items-center gap-2"><Target size={16}/> Воронка (5 этапов)</h4>
-                <ol className="list-decimal list-inside space-y-2">
-                   <li><strong>Трафик:</strong> Таргет на интересы "Крипта", "Инвестиции", "Форекс".</li>
-                   <li><strong>Посадка:</strong> Группа ВК, Лендинг или Витрина LeadCore.</li>
-                   <li><strong>Лид-магнит:</strong> "Скачай гайд 5 стратегий". Собираем базу в Senler.</li>
-                   <li><strong>Прогрев:</strong> Рассылка (80% пользы, 20% продажи).</li>
-                   <li><strong>Дожим:</strong> Smart-ссылка на регистрацию.</li>
-                </ol>
-             </div>
-          </div>
-       </section>
+          <div className="bg-[#120B1F] p-6 rounded-xl border border-white/5 text-ios-textSec text-sm leading-7 font-serif space-y-6">
+             <p>Привет! Мы разобрали Instagram и TikTok. Теперь — ВКонтакте. Это золотая жила для финансовой вертикали с аудиторией свыше 90 миллионов активных пользователей ежемесячно. Здесь сидят платёжеспособные мужчины 25–45 лет. ВК идеально подходит для долгих воронок и построения доверия.</p>
 
-       {/* === 5. TELEGRAM ADS === */}
-       <section className="space-y-6">
-          <div className="flex items-center gap-3">
-             <div className="w-8 h-8 rounded bg-sky-500 flex items-center justify-center text-white font-bold"><Send size={16}/></div>
-             <h3 className="text-xl font-serif text-white">5. Telegram Ads 2026</h3>
-          </div>
-
-          <div className="space-y-4 text-ios-textSec font-serif text-sm leading-7">
-             <p>Официальная реклама. Дорогой вход (от 300-500 евро), но самая качественная аудитория.</p>
-             
-             <div className="grid grid-cols-1 gap-3">
-                <div className="glass-card p-4 rounded-xl border border-white/10">
-                   <h4 className="text-white font-bold mb-1">🎯 Таргетинг</h4>
-                   <p className="text-xs">Лучше всего работает <strong>на конкретные каналы конкурентов</strong>. Интересы работают хуже.</p>
-                </div>
-                <div className="glass-card p-4 rounded-xl border border-white/10">
-                   <h4 className="text-white font-bold mb-1">📝 Текст объявления</h4>
-                   <p className="text-xs">160 символов. Без капслока и ошибок. <br/><em>"Bitcoin пробил $50K. Аналитика и сигналы каждый день. 👇 Забирай стратегию."</em></p>
-                </div>
+             <div>
+                <h3 className="text-white font-bold text-lg mb-2">1. Фундамент: создаём сообщество-магнит</h3>
+                <p>Прежде чем лить трафик, нужно подготовить посадочную страницу.</p>
+                <ul className="list-disc list-inside ml-2 space-y-1">
+                   <li><strong>Тип:</strong> Публичная страница (для блога) или Группа (для комьюнити).</li>
+                   <li><strong>Обложка:</strong> Должен быть оффер: «Зарабатывай на трейдинге с нуля», «+50% к депозиту».</li>
+                   <li><strong>Закрепленный пост:</strong> Ваша мини-воронка. Кто вы, что получит подписчик, ссылка на регистрацию.</li>
+                </ul>
              </div>
 
-             <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/30 flex gap-3">
-                <ShieldAlert className="text-rose-400 shrink-0" />
-                <p className="text-xs text-rose-200">
-                   <strong>Осторожно:</strong> Модерация жесткая. Не пишите "гарантированный доход". Ссылка должна вести на канал или бота, а не на фишинг.
+             <div>
+                <h3 className="text-white font-bold text-lg mb-2">2. Структура воронки: 5 этапов</h3>
+                
+                <p className="font-bold text-white mt-2">Этап 1: Привлечение трафика</p>
+                <p>Таргет ВК (самый эффективный). Настраиваем на мужчин 25-45 лет, города-миллионники. Интересы: Крипта, Инвестиции, Форекс, Бизнес.</p>
+
+                <p className="font-bold text-white mt-2">Этап 2: Посадочная страница</p>
+                <p>Ведем в группу ВК с закрепом или на Лендинг. Можно использовать витрину LeadCore (повышает конверсию).</p>
+
+                <p className="font-bold text-white mt-2">Этап 3: Сбор контактов (Лид-магнит)</p>
+                <p>Используем Senler. Предлагаем: «Скачай бесплатный гайд: 5 стратегий заработка». В обмен на подписку в рассылку.</p>
+
+                <p className="font-bold text-white mt-2">Этап 4: Прогрев</p>
+                <p>Контент 80/20. 80% пользы (обучение, новости), 20% призывы к регистрации. Используйте отзывы и кейсы.</p>
+             </div>
+
+             <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/30">
+                <h4 className="text-rose-400 font-bold flex items-center gap-2"><ShieldAlert size={18}/> Важное предупреждение</h4>
+                <p className="text-xs text-rose-200 mt-1">
+                   ВК жестко модерирует обещания дохода. Не пишите "золотые горы". Акцент на обучении, демо-счете и стратегиях. Работайте с реальными кейсами, а не фейковыми фото денег.
                 </p>
              </div>
           </div>
        </section>
 
-       {/* === 6. ЯНДЕКС.ДИРЕКТ === */}
+       {/* === TELEGRAM ADS === */}
        <section className="space-y-6">
           <div className="flex items-center gap-3">
-             <div className="w-8 h-8 rounded bg-red-500 flex items-center justify-center text-white font-bold">Я</div>
-             <h3 className="text-xl font-serif text-white">6. Яндекс.Директ</h3>
+             <div className="w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center text-white font-bold"><Send size={20}/></div>
+             <h2 className="text-2xl font-serif text-white">Telegram Ads: Полное руководство 2026</h2>
           </div>
 
-          <div className="space-y-4 text-ios-textSec font-serif text-sm leading-7">
-             <p>Самая "горячая" аудитория. Люди сами ищут "обучение трейдингу". Но модерация очень строгая.</p>
-             
-             <div className="bg-[#120B1F] p-5 rounded-xl border border-white/5">
-                <h4 className="text-white font-bold mb-3 flex items-center gap-2"><Search size={16}/> Что рекламируем?</h4>
-                <ul className="space-y-2 text-xs">
-                   <li className="flex gap-2"><span className="text-green-500">✅</span> <span>Обучение, Курсы, Вебинары ("Школа трейдинга").</span></li>
-                   <li className="flex gap-2"><span className="text-green-500">✅</span> <span>Аналитика, Новости рынка.</span></li>
-                   <li className="flex gap-2"><span className="text-rose-500">❌</span> <span>"Купи крипту", "Заработай миллион", "Бинарные опционы".</span></li>
+          <div className="bg-[#120B1F] p-6 rounded-xl border border-white/5 text-ios-textSec text-sm leading-7 font-serif space-y-6">
+             <p>Telegram Ads — это официальная рекламная платформа. Объявления показываются внизу каналов. Это один из самых эффективных каналов, так как аудитория уже потребляет контент про инвестиции.</p>
+
+             <div>
+                <h3 className="text-white font-bold text-lg mb-2">Настройка и Таргетинг</h3>
+                <p><strong>Регистрация:</strong> ads.telegram.org. Бюджет от 300-500 евро.</p>
+                <p><strong>Таргетинг:</strong> В нашей нише лучше всего работает ручной подбор каналов конкурентов (competitor targeting). Интересы работают хуже.</p>
+                <p><strong>Цена:</strong> CPM (за 1000 показов) от 1.5 до 2 евро.</p>
+             </div>
+
+             <div>
+                <h3 className="text-white font-bold text-lg mb-2">Как писать тексты (160 символов)</h3>
+                <p>Структура: Крючок → Выгода → Призыв. Без капслока и ошибок.</p>
+                <div className="grid gap-2 mt-2">
+                   <div className="bg-white/5 p-2 rounded text-xs font-mono text-gray-300">
+                      ₿ Bitcoin пробил $50K. Куда дальше?<br/>
+                      Аналитика и сигналы каждый день<br/>
+                      👇 Забирай стратегию бесплатно
+                   </div>
+                   <div className="bg-white/5 p-2 rounded text-xs font-mono text-gray-300">
+                      Трейдинг для занятых: 15 мин в день<br/>
+                      Копируй сделки профитов без опыта<br/>
+                      💰 Бонус 50% на первый депозит
+                   </div>
+                </div>
+             </div>
+
+             <div>
+                <h3 className="text-white font-bold text-lg mb-2">Модерация</h3>
+                <p>Запрещены: Гарантии дохода, скам, фишинг. Не используйте слова "бинарные опционы" в лоб, лучше "трейдинг", "торговля активами". Ссылка должна вести на канал или бота.</p>
+             </div>
+          </div>
+       </section>
+
+       {/* === ЯНДЕКС ДИРЕКТ === */}
+       <section className="space-y-6">
+          <div className="flex items-center gap-3">
+             <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-bold">Я</div>
+             <h2 className="text-2xl font-serif text-white">Яндекс.Директ 2026</h2>
+          </div>
+
+          <div className="bg-[#120B1F] p-6 rounded-xl border border-white/5 text-ios-textSec text-sm leading-7 font-serif space-y-6">
+             <p>Самый мощный инструмент для "горячей" аудитории. Люди сами ищут "обучение трейдингу". Но реклама финансов жестко регулируется.</p>
+
+             <div className="border border-rose-500/30 bg-rose-500/5 p-4 rounded-xl">
+                <h4 className="text-rose-400 font-bold mb-2">⛔ Что НЕЛЬЗЯ (прямой запрет)</h4>
+                <ul className="list-disc list-inside space-y-1 text-rose-200/80">
+                   <li>Прямые предложения купить/продать крипту</li>
+                   <li>Обещания доходов и хайпы</li>
+                   <li>Форекс без лицензии РФ</li>
+                   <li>Прямая реклама бинарных опционов</li>
+                </ul>
+                <p className="mt-2 text-green-400 font-bold">✅ Что МОЖНО (с осторожностью):</p>
+                <ul className="list-disc list-inside space-y-1 text-green-200/80">
+                   <li>Обучение и курсы ("Школа трейдинга")</li>
+                   <li>Аналитика и новости</li>
+                   <li>Консалтинг</li>
                 </ul>
              </div>
 
-             <div className="bg-[#120B1F] p-5 rounded-xl border border-white/5">
-                <h4 className="text-white font-bold mb-3 flex items-center gap-2"><MousePointerClick size={16}/> Настройка Поиска</h4>
-                <p className="mb-2 text-xs">Разделяйте кампании: Поиск отдельно, РСЯ (картинки на сайтах) отдельно.</p>
-                <div className="space-y-2 text-xs text-gray-300">
-                   <p>• <strong>Ключи:</strong> "курсы трейдинга", "обучение инвестициям", "как торговать".</p>
-                   <p>• <strong>Минус-слова:</strong> "бесплатно", "скачать", "работа".</p>
-                   <p>• <strong>Обязательно:</strong> Дисклеймер о рисках на сайте.</p>
-                </div>
+             <div>
+                <h3 className="text-white font-bold text-lg mb-2">Настройка Поисковой кампании</h3>
+                <ul className="list-disc list-inside ml-2 space-y-2">
+                   <li><strong>Режим:</strong> Только "Директ Про" (эксперт). "Простой старт" сольет бюджет.</li>
+                   <li><strong>Стратегия:</strong> "Максимум конверсий" (нужна настроенная Метрика).</li>
+                   <li><strong>Ключи:</strong> "обучение трейдингу", "курсы инвестиций", "как торговать".</li>
+                   <li><strong>Минус-слова:</strong> "бесплатно", "скачать", "работа", "вакансия".</li>
+                </ul>
+             </div>
+
+             <div>
+                <h3 className="text-white font-bold text-lg mb-2">РСЯ (Рекламная Сеть)</h3>
+                <p>Догоняющая реклама. Показываем картинки тем, кто был на сайте. Креативы должны быть эмоциональными.</p>
+             </div>
+
+             <div>
+                <h3 className="text-white font-bold text-lg mb-2">Чек-лист перед запуском</h3>
+                <ul className="space-y-2 text-xs text-gray-300">
+                   <li className="flex gap-2"><div className="w-4 h-4 rounded-full border border-gray-500"/> Создан счетчик Метрики и цели</li>
+                   <li className="flex gap-2"><div className="w-4 h-4 rounded-full border border-gray-500"/> Собрано семантическое ядро</li>
+                   <li className="flex gap-2"><div className="w-4 h-4 rounded-full border border-gray-500"/> На сайте есть дисклеймер о рисках</li>
+                   <li className="flex gap-2"><div className="w-4 h-4 rounded-full border border-gray-500"/> Бюджет на тест от 30 000 руб</li>
+                </ul>
              </div>
           </div>
        </section>
