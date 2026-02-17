@@ -1,22 +1,33 @@
 // ========================================================================================================
-// FILE: components/TabCourse.tsx
+// FILE: components/TabCourse.tsx (Optimized & Lazy Loaded)
 // ========================================================================================================
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { 
   BookOpen, ChevronRight, Play, Cpu, MessageCircle, 
-  ShieldAlert, TrendingUp, Gift, Crown, CheckCircle2, ShoppingBag 
+  ShieldAlert, TrendingUp, Gift, Crown, CheckCircle2, ShoppingBag, Loader2 
 } from 'lucide-react';
 
-// Импорт уроков
-import Lesson1 from './lessons/Lesson1';
-import Lesson2 from './lessons/Lesson2';
-import Lesson3 from './lessons/Lesson3';
-import Lesson4 from './lessons/Lesson4';
-import Lesson5 from './lessons/Lesson5';
-import Lesson6 from './lessons/Lesson6';
-import Lesson7 from './lessons/Lesson7';
-import Lesson8 from './lessons/Lesson8';
-import Lesson9 from './lessons/Lesson9';
+// === ЛЕНИВАЯ ЗАГРУЗКА (LAZY LOADING) ===
+// Уроки не загружаются сразу, а только при клике
+const Lesson1 = React.lazy(() => import('./lessons/Lesson1'));
+const Lesson2 = React.lazy(() => import('./lessons/Lesson2'));
+const Lesson3 = React.lazy(() => import('./lessons/Lesson3'));
+const Lesson4 = React.lazy(() => import('./lessons/Lesson4'));
+const Lesson5 = React.lazy(() => import('./lessons/Lesson5'));
+const Lesson6 = React.lazy(() => import('./lessons/Lesson6'));
+const Lesson7 = React.lazy(() => import('./lessons/Lesson7'));
+const Lesson8 = React.lazy(() => import('./lessons/Lesson8'));
+const Lesson9 = React.lazy(() => import('./lessons/Lesson9'));
+
+// Компонент загрузки (пока урок подгружается)
+const LoadingScreen = () => (
+  <div className="min-h-screen flex items-center justify-center bg-[#05010D]">
+    <div className="flex flex-col items-center gap-4">
+      <Loader2 size={40} className="text-ios-lilac animate-spin" />
+      <span className="text-ios-textSec text-xs uppercase tracking-widest animate-pulse">Загрузка модуля...</span>
+    </div>
+  </div>
+);
 
 const TabCourse: React.FC = () => {
   const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
@@ -39,16 +50,30 @@ const TabCourse: React.FC = () => {
     setActiveLessonId(null);
   };
 
-  // --- RENDER ACTIVE LESSON ---
-  if (activeLessonId === 'module-1') return <Lesson1 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
-  if (activeLessonId === 'module-2') return <Lesson2 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
-  if (activeLessonId === 'module-3') return <Lesson3 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
-  if (activeLessonId === 'module-4') return <Lesson4 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
-  if (activeLessonId === 'module-5') return <Lesson5 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
-  if (activeLessonId === 'module-6') return <Lesson6 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
-  if (activeLessonId === 'module-7') return <Lesson7 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
-  if (activeLessonId === 'module-8') return <Lesson8 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
-  if (activeLessonId === 'module-9') return <Lesson9 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
+  // Функция для рендера урока внутри Suspense (защита от пустого экрана)
+  const renderLesson = () => {
+    switch (activeLessonId) {
+      case 'module-1': return <Lesson1 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
+      case 'module-2': return <Lesson2 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
+      case 'module-3': return <Lesson3 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
+      case 'module-4': return <Lesson4 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
+      case 'module-5': return <Lesson5 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
+      case 'module-6': return <Lesson6 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
+      case 'module-7': return <Lesson7 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
+      case 'module-8': return <Lesson8 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
+      case 'module-9': return <Lesson9 onBack={() => setActiveLessonId(null)} onComplete={handleComplete} />;
+      default: return null;
+    }
+  };
+
+  // Если выбран урок, показываем его через Suspense
+  if (activeLessonId) {
+    return (
+      <Suspense fallback={<LoadingScreen />}>
+        {renderLesson()}
+      </Suspense>
+    );
+  }
 
   // --- CONFIGURATION ---
   const modules = [
@@ -63,6 +88,7 @@ const TabCourse: React.FC = () => {
     { id: 'module-9', title: 'Блок 9: Магазин Решений', desc: 'Инструменты под ключ для старта.', duration: 'PREMIUM', icon: ShoppingBag, color: 'text-fuchsia-400' },
   ];
 
+  // --- RENDER MENU LIST ---
   return (
     <div className="pb-36 pt-6 px-4 animate-fade-in">
        <div className="flex items-center justify-between mb-8">
