@@ -1,7 +1,10 @@
+// ========================================================================================================
+// FILE: components/TabCourse.tsx
+// ========================================================================================================
 import React, { useState, useEffect } from 'react';
 import { 
   BookOpen, ChevronRight, Play, Cpu, MessageCircle, 
-  ShieldAlert, TrendingUp, Gift, Crown, CheckCircle2 
+  ShieldAlert, TrendingUp, Gift, Crown, CheckCircle2, ShoppingBag 
 } from 'lucide-react';
 
 // Импорт уроков
@@ -56,8 +59,8 @@ const TabCourse: React.FC = () => {
     { id: 'module-5', title: 'Блок 5: Секретные фишки', desc: 'Обход блокировок, маскировка.', duration: '30 мин', icon: ShieldAlert, color: 'text-rose-500' },
     { id: 'module-6', title: 'Блок 6: Психология', desc: 'Психология продаж и комьюнити.', duration: '35 мин', icon: MessageCircle, color: 'text-green-400' },
     { id: 'module-7', title: 'Блок 7: Масштаб и Право', desc: 'Юридические вопросы и рост.', duration: '25 мин', icon: TrendingUp, color: 'text-cyan-400' },
-    { id: 'module-8', title: 'Бонус-модуль', desc: 'Готовые воронки и инструменты.', duration: '20 мин', icon: Gift, color: 'text-yellow-400' },
-    { id: 'module-9', title: 'Блок 9: Стратегия', desc: 'Долгосрочное планирование.', duration: '15 мин', icon: Play, color: 'text-gray-400' },
+    { id: 'module-8', title: 'Блок 8: Бонус-модуль', desc: 'Готовые воронки и инструменты.', duration: '20 мин', icon: Gift, color: 'text-yellow-400' },
+    { id: 'module-9', title: 'Блок 9: Магазин Решений', desc: 'Инструменты под ключ для старта.', duration: 'PREMIUM', icon: ShoppingBag, color: 'text-fuchsia-400' },
   ];
 
   return (
@@ -83,7 +86,7 @@ const TabCourse: React.FC = () => {
                   <div className={`h-24 bg-gradient-to-r relative overflow-hidden ${isCompleted ? 'from-green-900 to-emerald-900' : 'from-[#120B1F] to-[#1E1233]'}`}>
                      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
                      <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-2 py-1 rounded text-[10px] text-white font-bold tracking-wider uppercase flex items-center gap-2">
-                        {idx === 7 ? 'BONUS' : `Модуль ${idx + 1}`}
+                        {mod.title.split(':')[0]}
                         {isCompleted && <CheckCircle2 size={10} className="text-green-400"/>}
                      </div>
                      <Icon className={`absolute bottom-4 right-4 opacity-20 rotate-12 ${mod.color}`} size={40} />
@@ -91,12 +94,15 @@ const TabCourse: React.FC = () => {
                   
                   <div className="p-5">
                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-lg font-serif text-white leading-tight pr-4">{mod.title}</h3>
+                        <h3 className="text-lg font-serif text-white leading-tight pr-4">{mod.title.split(': ')[1]}</h3>
+                        <span className={`text-[10px] flex items-center gap-1 px-2 py-1 rounded ${mod.duration === 'PREMIUM' ? 'bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30' : 'bg-ios-lilac/10 text-ios-lilac'}`}>
+                           {mod.duration}
+                        </span>
                      </div>
                      <p className="text-xs text-ios-textSec line-clamp-2 mb-3">{mod.desc}</p>
                      
                      <div className={`pt-3 border-t border-white/5 flex items-center text-xs font-medium transition-transform group-hover:translate-x-1 ${isCompleted ? 'text-green-400' : 'text-ios-lilac'}`}>
-                        {isCompleted ? 'Пройдено' : 'Начать обучение'} <ChevronRight size={14} className="ml-1" />
+                        {isCompleted ? 'Пройдено' : (idx === 8 ? 'Открыть Витрину' : 'Начать обучение')} <ChevronRight size={14} className="ml-1" />
                      </div>
                   </div>
                </div>
